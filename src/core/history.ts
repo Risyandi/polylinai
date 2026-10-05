@@ -1,3 +1,12 @@
+/**
+ * PolylinAI - History & State Stack Manager
+ * Provides undo and redo capabilities with immutable state snapshots.
+ *
+ * Created by Risyandi in collaboration with AI.
+ * Contact: hello@risyandi.com
+ * Licensed under the MIT License.
+ */
+
 import { RoiZone } from '../types';
 
 export class HistoryManager {

@@ -1,3 +1,11 @@
+/**
+ * PolylinAI - Unit Tests: Directional Vectors & Cardinal Angles
+ *
+ * Created by Risyandi in collaboration with AI.
+ * Contact: hello@risyandi.com
+ * Licensed under the MIT License.
+ */
+
 import { describe, expect, it } from 'vitest';
 import {
   angleToCardinal,

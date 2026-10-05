@@ -1,3 +1,12 @@
+/**
+ * PolylinAI - Polygon & Dynamic N-Point Geometry Utilities
+ * Implements point-in-polygon ray casting, centroid calculation, and dynamic edge splitting.
+ *
+ * Created by Risyandi in collaboration with AI.
+ * Contact: hello@risyandi.com
+ * Licensed under the MIT License.
+ */
+
 import { PixelPoint, RoiPoint } from '../types';
 import { distanceToSegment, midpoint } from './point';
 

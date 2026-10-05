@@ -1,3 +1,11 @@
+/**
+ * PolylinAI - Unit Tests: History Manager (Undo / Redo)
+ *
+ * Created by Risyandi in collaboration with AI.
+ * Contact: hello@risyandi.com
+ * Licensed under the MIT License.
+ */
+
 import { describe, expect, it } from 'vitest';
 import { HistoryManager } from '../../src/core/history';
 import { RoiZone } from '../../src/types';

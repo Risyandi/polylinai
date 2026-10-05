@@ -1,3 +1,12 @@
+/**
+ * PolylinAI - Roboflow Supervision Exporter
+ * Formats ROI zones and tripwires for use with Supervision LineZone and ZoneAnnotator.
+ *
+ * Created by Risyandi in collaboration with AI.
+ * Contact: hello@risyandi.com
+ * Licensed under the MIT License.
+ */
+
 import { RoiZone } from '../types';
 
 export interface SupervisionExportOptions {

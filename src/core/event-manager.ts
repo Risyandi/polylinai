@@ -1,3 +1,12 @@
+/**
+ * PolylinAI - Pointer & Keyboard Event Manager
+ * Manages drawing interactions, pointer capture, vertex dragging, and keyboard shortcuts.
+ *
+ * Created by Risyandi in collaboration with AI.
+ * Contact: hello@risyandi.com
+ * Licensed under the MIT License.
+ */
+
 import { DrawingState, PixelPoint, PolylinAiOptions, RoiPoint, RoiZone } from '../types';
 import { clampPoint, distance, toNormalized, toPixel } from '../geometry/point';
 import { SvgRenderer } from './renderer';

@@ -177,6 +177,11 @@ npm run build
 
 ---
 
+## Credits & Author
+
+Created by **Risyandi** in collaboration with AI.  
+Contact: [hello@risyandi.com](mailto:hello@risyandi.com)
+
 ## License
 
 [MIT](LICENSE) © 2026 Risyandi

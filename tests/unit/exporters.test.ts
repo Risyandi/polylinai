@@ -1,3 +1,11 @@
+/**
+ * PolylinAI - Unit Tests: Computer Vision Exporters
+ *
+ * Created by Risyandi in collaboration with AI.
+ * Contact: hello@risyandi.com
+ * Licensed under the MIT License.
+ */
+
 import { describe, expect, it } from 'vitest';
 import { exportToYolo } from '../../src/exporters/yolo';
 import { exportToOpenCv, generateOpenCvPythonSnippet } from '../../src/exporters/opencv';

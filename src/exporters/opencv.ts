@@ -1,3 +1,12 @@
+/**
+ * PolylinAI - OpenCV Exporter & Python Code Generator
+ * Converts normalized ROI zones into scaled integer pixel coordinates for OpenCV and generates Python scripts.
+ *
+ * Created by Risyandi in collaboration with AI.
+ * Contact: hello@risyandi.com
+ * Licensed under the MIT License.
+ */
+
 import { RoiZone } from '../types';
 
 export interface OpenCvExportOptions {

@@ -46,7 +46,7 @@
     "cctv",
     "svg"
   ],
-  "author": "Risyandi",
+  "author": "Risyandi <hello@risyandi.com>",
   "license": "MIT",
   "devDependencies": {
     "tsup": "^8.4.0",

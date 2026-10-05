@@ -1,3 +1,12 @@
+/**
+ * PolylinAI - YOLO Segmentation Exporter
+ * Formats normalized polygon coordinates into standard YOLO segmentation annotation format.
+ *
+ * Created by Risyandi in collaboration with AI.
+ * Contact: hello@risyandi.com
+ * Licensed under the MIT License.
+ */
+
 import { RoiZone } from '../types';
 
 export interface YoloExportOptions {

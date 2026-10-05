@@ -1,3 +1,11 @@
+/**
+ * PolylinAI - 2D Point & Coordinate Transformation Utilities
+ *
+ * Created by Risyandi in collaboration with AI.
+ * Contact: hello@risyandi.com
+ * Licensed under the MIT License.
+ */
+
 import { PixelPoint, RoiPoint } from '../types';
 
 /**

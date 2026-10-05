@@ -1,3 +1,12 @@
+/**
+ * PolylinAI - Core Engine Controller
+ * Manages Region of Interest (ROI) drawing lifecycle, zones, and exports.
+ *
+ * Created by Risyandi in collaboration with AI.
+ * Contact: hello@risyandi.com
+ * Licensed under the MIT License.
+ */
+
 import {
   DirectionType,
   DrawingState,

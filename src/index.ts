@@ -1,3 +1,11 @@
+/**
+ * PolylinAI - Region of Interest & Polyline Library Entry Point
+ *
+ * Created by Risyandi in collaboration with AI.
+ * Contact: hello@risyandi.com
+ * Licensed under the MIT License.
+ */
+
 // Core Engine
 export { PolylinAI } from './core/engine';
 

@@ -1,3 +1,12 @@
+/**
+ * PolylinAI - Studio Playground Application
+ * Interactive simulated CCTV interface with live coordinate tracking and export inspector.
+ *
+ * Created by Risyandi in collaboration with AI.
+ * Contact: hello@risyandi.com
+ * Licensed under the MIT License.
+ */
+
 import {
   DirectionType,
   PolylinAI,

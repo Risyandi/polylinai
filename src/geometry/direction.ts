@@ -1,3 +1,12 @@
+/**
+ * PolylinAI - Directional Vector & Movement Flow Utilities
+ * Computes cardinal angles, tripwire crossing normals, and movement intent.
+ *
+ * Created by Risyandi in collaboration with AI.
+ * Contact: hello@risyandi.com
+ * Licensed under the MIT License.
+ */
+
 import { CardinalDirection, DirectionType, RoiDirection, RoiPoint } from '../types';
 import { clampPoint } from './point';
 

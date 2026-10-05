@@ -1,3 +1,11 @@
+/**
+ * PolylinAI - TypeScript Type Definitions
+ *
+ * Created by Risyandi in collaboration with AI.
+ * Contact: hello@risyandi.com
+ * Licensed under the MIT License.
+ */
+
 export interface RoiPoint {
   /** Normalized X coordinate between 0.0 and 1.0 */
   x: number;

@@ -1,3 +1,12 @@
+/**
+ * PolylinAI - SVG Renderer
+ * Handles resolution-independent SVG DOM rendering, vertex handles, and directional arrows.
+ *
+ * Created by Risyandi in collaboration with AI.
+ * Contact: hello@risyandi.com
+ * Licensed under the MIT License.
+ */
+
 import { PolylinAiOptions, RoiPoint, RoiZone } from '../types';
 import { pointsToSvgString } from '../geometry/polygon';
 import { toPixel } from '../geometry/point';
