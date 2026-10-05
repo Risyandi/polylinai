@@ -1,9 +1,17 @@
-# PolylinAI
+<p align="center">
+  <a href="https://github.com/risyandi/polylinai">
+    <img src="./assets/logo-horizontal.jpg" alt="PolylinAI Logo" width="460" />
+  </a>
+</p>
 
-> High-performance, zero-dependency SVG Region of Interest (ROI) and Polyline drawing library for AI Computer Vision video feeds.
+<p align="center">
+  <strong>High-performance, zero-dependency SVG Region of Interest (ROI) and Polyline drawing library for AI Computer Vision video feeds.</strong>
+</p>
 
-[![CI](https://github.com/risyandi/polylinai/actions/workflows/ci.yml/badge.svg)](https://github.com/risyandi/polylinai/actions)
-[![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](https://opensource.org/licenses/MIT)
+<p align="center">
+  <a href="https://github.com/risyandi/polylinai/actions"><img src="https://github.com/risyandi/polylinai/actions/workflows/ci.yml/badge.svg" alt="CI" /></a>
+  <a href="https://opensource.org/licenses/MIT"><img src="https://img.shields.io/badge/License-MIT-blue.svg" alt="License: MIT" /></a>
+</p>
 
 **PolylinAI** enables users to interactively draw, adjust, and configure custom detection zones and directional tripwires over live camera feeds, recorded videos, or static frames. It exports standardized geometric and directional metadata for Computer Vision pipelines (YOLO, OpenCV, Roboflow, Supervision).
 
