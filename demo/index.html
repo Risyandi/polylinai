@@ -1,11 +1,11 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="dark">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>PolylinAI - Region of Interest & Tripwire Studio</title>
   <style>
-    :root {
+    :root, :root[data-theme="dark"] {
       --bg: #0f172a;
       --card-bg: #1e293b;
       --border: #334155;
@@ -16,6 +16,31 @@
       --success: #10b981;
       --danger: #ef4444;
       --warning: #f59e0b;
+      --input-bg: #0f172a;
+      --btn-bg: #334155;
+      --btn-hover: #475569;
+      --btn-text: #f8fafc;
+      --export-bg: #090d16;
+      --header-bg: #0b1120;
+    }
+
+    :root[data-theme="light"] {
+      --bg: #f8fafc;
+      --card-bg: #ffffff;
+      --border: #e2e8f0;
+      --text: #0f172a;
+      --text-muted: #64748b;
+      --primary: #2563eb;
+      --primary-hover: #1d4ed8;
+      --success: #059669;
+      --danger: #dc2626;
+      --warning: #d97706;
+      --input-bg: #f1f5f9;
+      --btn-bg: #e2e8f0;
+      --btn-hover: #cbd5e1;
+      --btn-text: #0f172a;
+      --export-bg: #0f172a;
+      --header-bg: #ffffff;
     }
 
     * {
@@ -31,17 +56,19 @@
       min-height: 100vh;
       display: flex;
       flex-direction: column;
+      transition: background-color 0.2s ease, color 0.2s ease;
     }
 
     header {
-      padding: 16px 24px;
-      background: #0b1120;
+      padding: 14px 24px;
+      background: var(--header-bg);
       border-bottom: 1px solid var(--border);
       display: flex;
       align-items: center;
       justify-content: space-between;
       flex-wrap: wrap;
       gap: 12px;
+      transition: background-color 0.2s ease, border-color 0.2s ease;
     }
 
     .brand {
@@ -58,17 +85,23 @@
 
     .brand-tag {
       font-size: 0.75rem;
-      background: #1e293b;
+      background: var(--card-bg);
       border: 1px solid var(--border);
       padding: 2px 8px;
       border-radius: 4px;
       color: var(--text-muted);
     }
 
+    .header-actions {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
     .main-layout {
       flex: 1;
       display: grid;
-      grid-template-columns: 1fr 380px;
+      grid-template-columns: 1fr 400px;
       gap: 20px;
       padding: 20px;
       max-width: 1600px;
@@ -90,6 +123,7 @@
       display: flex;
       flex-direction: column;
       gap: 12px;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.05);
     }
 
     .viewport-header {
@@ -132,8 +166,8 @@
       padding: 8px 14px;
       border-radius: 6px;
       border: 1px solid var(--border);
-      background: #334155;
-      color: var(--text);
+      background: var(--btn-bg);
+      color: var(--btn-text);
       cursor: pointer;
       display: inline-flex;
       align-items: center;
@@ -142,7 +176,7 @@
     }
 
     button:hover:not(:disabled) {
-      background: #475569;
+      background: var(--btn-hover);
     }
 
     button:active:not(:disabled) {
@@ -157,6 +191,7 @@
     button.btn-primary {
       background: var(--primary);
       border-color: var(--primary);
+      color: #ffffff;
     }
 
     button.btn-primary:hover:not(:disabled) {
@@ -166,13 +201,14 @@
     button.btn-success {
       background: var(--success);
       border-color: var(--success);
-      color: #000;
+      color: #ffffff;
       font-weight: 600;
     }
 
     button.btn-danger {
       background: var(--danger);
       border-color: var(--danger);
+      color: #ffffff;
     }
 
     .side-panel {
@@ -189,10 +225,11 @@
       display: flex;
       flex-direction: column;
       gap: 12px;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.05);
     }
 
     .panel-card h2 {
-      font-size: 0.95rem;
+      font-size: 0.92rem;
       font-weight: 600;
       text-transform: uppercase;
       letter-spacing: 0.05em;
@@ -215,7 +252,7 @@
     select, input[type="text"], input[type="color"] {
       font-family: inherit;
       font-size: 0.875rem;
-      background: #0f172a;
+      background: var(--input-bg);
       border: 1px solid var(--border);
       color: var(--text);
       padding: 8px 10px;
@@ -226,17 +263,61 @@
       outline: 2px solid var(--primary);
     }
 
+    /* Live Analytics Stats Card */
+    .counting-stats-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 8px;
+    }
+
+    .stat-box {
+      background: var(--input-bg);
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      padding: 10px;
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+
+    .stat-label {
+      font-size: 0.72rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      color: var(--text-muted);
+    }
+
+    .stat-value {
+      font-size: 1.5rem;
+      font-weight: 700;
+      font-family: ui-monospace, SFMono-Regular, monospace;
+      color: var(--text);
+    }
+
+    .stat-box.is-in .stat-value {
+      color: #10b981;
+    }
+
+    .stat-box.is-out .stat-value {
+      color: #3b82f6;
+    }
+
+    .stat-box.is-total .stat-value {
+      color: #f59e0b;
+    }
+
     .zone-list {
       display: flex;
       flex-direction: column;
       gap: 8px;
-      max-height: 240px;
+      max-height: 220px;
       overflow-y: auto;
     }
 
     .zone-item {
       padding: 10px 12px;
-      background: #0f172a;
+      background: var(--input-bg);
       border: 1px solid var(--border);
       border-radius: 6px;
       display: flex;
@@ -248,7 +329,7 @@
 
     .zone-item.is-selected {
       border-color: var(--primary);
-      background: #1e3a8a33;
+      background: #3b82f61a;
     }
 
     .zone-info {
@@ -268,25 +349,25 @@
       font-size: 0.75rem;
       padding: 2px 6px;
       border-radius: 4px;
-      background: #334155;
+      background: var(--btn-bg);
       color: var(--text-muted);
     }
 
     .export-box {
       font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
       font-size: 0.75rem;
-      background: #090d16;
+      background: var(--export-bg);
       border: 1px solid var(--border);
       border-radius: 6px;
       padding: 10px;
-      height: 180px;
+      height: 160px;
       overflow: auto;
       white-space: pre;
       color: #38bdf8;
     }
 
     .hint-banner {
-      background: #0b1120;
+      background: var(--input-bg);
       border: 1px dashed var(--border);
       border-radius: 6px;
       padding: 8px 12px;
@@ -300,12 +381,23 @@
   <header>
     <div class="brand">
       <h1>PolylinAI Studio</h1>
-      <span class="brand-tag">v0.1.0 (Production Core)</span>
+      <span class="brand-tag" data-i18n="brandTag">v0.1.0 (Production Core)</span>
     </div>
-    <div class="toolbar">
-      <button id="btn-undo" title="Undo (Ctrl+Z)">↺ Undo</button>
-      <button id="btn-redo" title="Redo (Ctrl+Y)">↻ Redo</button>
-      <button id="btn-clear" class="btn-danger">Clear All</button>
+
+    <div class="header-actions">
+      <!-- Language Switcher -->
+      <select id="lang-select" title="Language / Bahasa" style="padding: 6px 10px;">
+        <option value="en">🇺🇸 English</option>
+        <option value="id">🇮🇩 Indonesia</option>
+      </select>
+
+      <!-- Theme Switcher -->
+      <button id="btn-theme" title="Toggle Theme" style="padding: 6px 12px;">🌙</button>
+
+      <!-- Undo / Redo / Clear -->
+      <button id="btn-undo" title="Undo" data-i18n="undo">↺ Undo</button>
+      <button id="btn-redo" title="Redo" data-i18n="redo">↻ Redo</button>
+      <button id="btn-clear" class="btn-danger" data-i18n="clearAll">Clear All</button>
     </div>
   </header>
 
@@ -313,7 +405,7 @@
     <!-- Viewport Area -->
     <section class="video-viewport-card">
       <div class="viewport-header">
-        <span id="stream-status">Simulated CCTV Feed (1920x1080 Aspect Ratio)</span>
+        <span id="stream-status" data-i18n="feedTitle">Simulated CCTV Feed (1920x1080 Aspect Ratio)</span>
         <span id="cursor-coords">X: 0.000 | Y: 0.000 (Normalized)</span>
       </div>
 
@@ -323,42 +415,70 @@
       </div>
 
       <div class="toolbar">
-        <button id="btn-draw-polygon" class="btn-primary">⬡ Draw Polygon Zone</button>
-        <button id="btn-draw-polyline" class="btn-primary">⟋ Draw Tripwire Line</button>
-        <button id="btn-finish-drawing" class="btn-success" style="display: none;">✓ Complete Zone</button>
-        <button id="btn-cancel-drawing" style="display: none;">✕ Cancel</button>
+        <button id="btn-draw-polygon" class="btn-primary" data-i18n="drawPolygon">⬡ Draw Polygon Zone</button>
+        <button id="btn-draw-polyline" class="btn-primary" data-i18n="drawPolyline">⟋ Draw Tripwire Line</button>
+        <button id="btn-finish-drawing" class="btn-success" style="display: none;" data-i18n="finishZone">✓ Complete Zone</button>
+        <button id="btn-cancel-drawing" style="display: none;" data-i18n="cancel">✕ Cancel</button>
       </div>
 
-      <div class="hint-banner">
-        <strong>Interaction Tips:</strong>
-        Click on video to add points. Double-click or click first point to close polygon.
+      <div class="hint-banner" id="hint-text" data-i18n="interactionTips">
+        Interaction Tips: Click on video to add points. Double-click or click first point to close polygon.
         Select a zone to drag vertices or click on edge midpoints to dynamically insert vertices. Right-click any vertex to remove it.
       </div>
     </section>
 
     <!-- Side Inspection Panel -->
     <aside class="side-panel">
+      <!-- Live Tripwire Object Counting Analytics -->
+      <div class="panel-card">
+        <div style="display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid var(--border); padding-bottom: 8px;">
+          <h2 style="border-bottom: none; padding-bottom: 0; margin-bottom: 0;" data-i18n="liveAnalytics">Live Tripwire Analytics</h2>
+          <button id="btn-reset-counts" style="font-size: 0.75rem; padding: 4px 8px;" data-i18n="resetCounts">Reset Counts</button>
+        </div>
+        <div class="counting-stats-grid">
+          <div class="stat-box is-in">
+            <span class="stat-label" data-i18n="inflow">IN</span>
+            <span class="stat-value" id="count-in">0</span>
+          </div>
+          <div class="stat-box is-out">
+            <span class="stat-label" data-i18n="outflow">OUT</span>
+            <span class="stat-value" id="count-out">0</span>
+          </div>
+          <div class="stat-box is-total">
+            <span class="stat-label" data-i18n="total">TOTAL</span>
+            <span class="stat-value" id="count-total">0</span>
+          </div>
+        </div>
+        <div id="active-tripwires-summary" style="font-size: 0.8rem; color: var(--text-muted); line-height: 1.4;">
+          <!-- Active tripwire lines detail -->
+        </div>
+      </div>
+
       <!-- Zone Inspector -->
       <div class="panel-card">
-        <h2>Zone Configuration</h2>
+        <h2 data-i18n="zoneConfig">Zone Configuration</h2>
         <div id="inspector-content">
-          <p style="font-size: 0.85rem; color: var(--text-muted);">Select or draw a zone to edit directional flows and attributes.</p>
+          <p style="font-size: 0.85rem; color: var(--text-muted);" data-i18n="zoneConfigPlaceholder">
+            Select or draw a zone to edit directional flows and attributes.
+          </p>
         </div>
       </div>
 
       <!-- Active Zones List -->
       <div class="panel-card">
-        <h2>Defined Zones (<span id="zone-count">0</span>)</h2>
+        <h2><span data-i18n="definedZones">Defined Zones</span> (<span id="zone-count">0</span>)</h2>
         <div class="zone-list" id="zones-container">
-          <p style="font-size: 0.85rem; color: var(--text-muted); text-align: center; padding: 12px 0;">No active zones.</p>
+          <p style="font-size: 0.85rem; color: var(--text-muted); text-align: center; padding: 12px 0;" data-i18n="noActiveZones">
+            No active zones.
+          </p>
         </div>
       </div>
 
       <!-- CV Export Format -->
       <div class="panel-card">
-        <h2>Computer Vision Export</h2>
+        <h2 data-i18n="cvExport">Computer Vision Export</h2>
         <div class="form-group">
-          <label for="export-format">Select AI Pipeline Schema:</label>
+          <label for="export-format" data-i18n="selectAiSchema">Select AI Pipeline Schema:</label>
           <select id="export-format">
             <option value="yolo">YOLO Segmentation (Normalized)</option>
             <option value="opencv">OpenCV Scaled Points (JSON)</option>
@@ -369,8 +489,8 @@
         </div>
         <div class="export-box" id="export-preview"></div>
         <div style="display: flex; gap: 8px;">
-          <button id="btn-copy-export" style="flex: 1;">Copy to Clipboard</button>
-          <button id="btn-load-sample" style="flex: 1;">Load Preset</button>
+          <button id="btn-copy-export" style="flex: 1;" data-i18n="copyClipboard">Copy to Clipboard</button>
+          <button id="btn-load-sample" style="flex: 1;" data-i18n="loadPreset">Load Preset</button>
         </div>
       </div>
     </aside>
