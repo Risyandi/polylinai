@@ -10,7 +10,7 @@ export type SupportedLocale = 'en' | 'id';
 
 export const translations: Record<SupportedLocale, Record<string, string>> = {
   en: {
-    brandTag: 'v0.1.0 (Production Core)',
+    brandTag: 'v1.0.0 (Production Core)',
     undo: '↺ Undo',
     redo: '↻ Redo',
     clearAll: 'Clear All',
@@ -54,7 +54,7 @@ export const translations: Record<SupportedLocale, Record<string, string>> = {
     tripwireType: 'Tripwire',
   },
   id: {
-    brandTag: 'v0.1.0 (Inti Produksi)',
+    brandTag: 'v1.0.0 (Inti Produksi)',
     undo: '↺ Urungkan',
     redo: '↻ Ulangi',
     clearAll: 'Hapus Semua',
