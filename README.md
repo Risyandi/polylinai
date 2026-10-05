@@ -11,6 +11,8 @@
 <p align="center">
   <a href="https://github.com/risyandi/polylinai/actions"><img src="https://github.com/risyandi/polylinai/actions/workflows/ci.yml/badge.svg" alt="CI" /></a>
   <a href="https://opensource.org/licenses/MIT"><img src="https://img.shields.io/badge/License-MIT-blue.svg" alt="License: MIT" /></a>
+  <a href="https://www.npmjs.com/package/polylinai"><img src="https://img.shields.io/badge/npm-v1.0.0-orange.svg" alt="npm version" /></a>
+  <a href="./CHANGELOG.md"><img src="https://img.shields.io/badge/Changelog-v1.0.0-green.svg" alt="Changelog" /></a>
 </p>
 
 <p align="center">
