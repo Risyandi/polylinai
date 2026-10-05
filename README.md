@@ -13,6 +13,10 @@
   <a href="https://opensource.org/licenses/MIT"><img src="https://img.shields.io/badge/License-MIT-blue.svg" alt="License: MIT" /></a>
 </p>
 
+<p align="center">
+  <img src="./assets/polylinai-demo.gif" alt="PolylinAI Interactive Studio Demo" width="100%" />
+</p>
+
 **PolylinAI** enables users to interactively draw, adjust, and configure custom detection zones and directional tripwires over live camera feeds, recorded videos, or static frames. It exports standardized geometric and directional metadata for Computer Vision pipelines (YOLO, OpenCV, Roboflow, Supervision).
 
 ---
