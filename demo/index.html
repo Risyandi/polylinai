@@ -1,0 +1,381 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>PolylinAI - Region of Interest & Tripwire Studio</title>
+  <style>
+    :root {
+      --bg: #0f172a;
+      --card-bg: #1e293b;
+      --border: #334155;
+      --text: #f8fafc;
+      --text-muted: #94a3b8;
+      --primary: #3b82f6;
+      --primary-hover: #2563eb;
+      --success: #10b981;
+      --danger: #ef4444;
+      --warning: #f59e0b;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    header {
+      padding: 16px 24px;
+      background: #0b1120;
+      border-bottom: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .brand h1 {
+      font-size: 1.25rem;
+      font-weight: 700;
+      letter-spacing: -0.025em;
+    }
+
+    .brand-tag {
+      font-size: 0.75rem;
+      background: #1e293b;
+      border: 1px solid var(--border);
+      padding: 2px 8px;
+      border-radius: 4px;
+      color: var(--text-muted);
+    }
+
+    .main-layout {
+      flex: 1;
+      display: grid;
+      grid-template-columns: 1fr 380px;
+      gap: 20px;
+      padding: 20px;
+      max-width: 1600px;
+      margin: 0 auto;
+      width: 100%;
+    }
+
+    @media (max-width: 1024px) {
+      .main-layout {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .video-viewport-card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 16px;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .viewport-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 0.875rem;
+      color: var(--text-muted);
+    }
+
+    .video-container {
+      position: relative;
+      width: 100%;
+      aspect-ratio: 16 / 9;
+      background: #000000;
+      border-radius: 6px;
+      overflow: hidden;
+      box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.8);
+    }
+
+    .video-container canvas,
+    .video-container video {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    .toolbar {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      align-items: center;
+    }
+
+    button {
+      font-family: inherit;
+      font-size: 0.875rem;
+      font-weight: 500;
+      padding: 8px 14px;
+      border-radius: 6px;
+      border: 1px solid var(--border);
+      background: #334155;
+      color: var(--text);
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      transition: all 0.15s ease;
+    }
+
+    button:hover:not(:disabled) {
+      background: #475569;
+    }
+
+    button:active:not(:disabled) {
+      transform: translateY(1px);
+    }
+
+    button:disabled {
+      opacity: 0.5;
+      cursor: not-allowed;
+    }
+
+    button.btn-primary {
+      background: var(--primary);
+      border-color: var(--primary);
+    }
+
+    button.btn-primary:hover:not(:disabled) {
+      background: var(--primary-hover);
+    }
+
+    button.btn-success {
+      background: var(--success);
+      border-color: var(--success);
+      color: #000;
+      font-weight: 600;
+    }
+
+    button.btn-danger {
+      background: var(--danger);
+      border-color: var(--danger);
+    }
+
+    .side-panel {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    .panel-card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 16px;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .panel-card h2 {
+      font-size: 0.95rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      color: var(--text-muted);
+      border-bottom: 1px solid var(--border);
+      padding-bottom: 8px;
+    }
+
+    .form-group {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+
+    .form-group label {
+      font-size: 0.8rem;
+      color: var(--text-muted);
+    }
+
+    select, input[type="text"], input[type="color"] {
+      font-family: inherit;
+      font-size: 0.875rem;
+      background: #0f172a;
+      border: 1px solid var(--border);
+      color: var(--text);
+      padding: 8px 10px;
+      border-radius: 6px;
+    }
+
+    select:focus, input:focus {
+      outline: 2px solid var(--primary);
+    }
+
+    .zone-list {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      max-height: 240px;
+      overflow-y: auto;
+    }
+
+    .zone-item {
+      padding: 10px 12px;
+      background: #0f172a;
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      cursor: pointer;
+      transition: border-color 0.15s ease;
+    }
+
+    .zone-item.is-selected {
+      border-color: var(--primary);
+      background: #1e3a8a33;
+    }
+
+    .zone-info {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 0.875rem;
+    }
+
+    .color-swatch {
+      width: 12px;
+      height: 12px;
+      border-radius: 3px;
+    }
+
+    .status-badge {
+      font-size: 0.75rem;
+      padding: 2px 6px;
+      border-radius: 4px;
+      background: #334155;
+      color: var(--text-muted);
+    }
+
+    .export-box {
+      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+      font-size: 0.75rem;
+      background: #090d16;
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      padding: 10px;
+      height: 180px;
+      overflow: auto;
+      white-space: pre;
+      color: #38bdf8;
+    }
+
+    .hint-banner {
+      background: #0b1120;
+      border: 1px dashed var(--border);
+      border-radius: 6px;
+      padding: 8px 12px;
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      line-height: 1.4;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="brand">
+      <h1>PolylinAI Studio</h1>
+      <span class="brand-tag">v0.1.0 (Production Core)</span>
+    </div>
+    <div class="toolbar">
+      <button id="btn-undo" title="Undo (Ctrl+Z)">↺ Undo</button>
+      <button id="btn-redo" title="Redo (Ctrl+Y)">↻ Redo</button>
+      <button id="btn-clear" class="btn-danger">Clear All</button>
+    </div>
+  </header>
+
+  <main class="main-layout">
+    <!-- Viewport Area -->
+    <section class="video-viewport-card">
+      <div class="viewport-header">
+        <span id="stream-status">Simulated CCTV Feed (1920x1080 Aspect Ratio)</span>
+        <span id="cursor-coords">X: 0.000 | Y: 0.000 (Normalized)</span>
+      </div>
+
+      <div class="video-container" id="video-wrapper">
+        <canvas id="mock-canvas" width="1280" height="720"></canvas>
+        <!-- PolylinAI SVG Overlay mounts here -->
+      </div>
+
+      <div class="toolbar">
+        <button id="btn-draw-polygon" class="btn-primary">⬡ Draw Polygon Zone</button>
+        <button id="btn-draw-polyline" class="btn-primary">⟋ Draw Tripwire Line</button>
+        <button id="btn-finish-drawing" class="btn-success" style="display: none;">✓ Complete Zone</button>
+        <button id="btn-cancel-drawing" style="display: none;">✕ Cancel</button>
+      </div>
+
+      <div class="hint-banner">
+        <strong>Interaction Tips:</strong>
+        Click on video to add points. Double-click or click first point to close polygon.
+        Select a zone to drag vertices or click on edge midpoints to dynamically insert vertices. Right-click any vertex to remove it.
+      </div>
+    </section>
+
+    <!-- Side Inspection Panel -->
+    <aside class="side-panel">
+      <!-- Zone Inspector -->
+      <div class="panel-card">
+        <h2>Zone Configuration</h2>
+        <div id="inspector-content">
+          <p style="font-size: 0.85rem; color: var(--text-muted);">Select or draw a zone to edit directional flows and attributes.</p>
+        </div>
+      </div>
+
+      <!-- Active Zones List -->
+      <div class="panel-card">
+        <h2>Defined Zones (<span id="zone-count">0</span>)</h2>
+        <div class="zone-list" id="zones-container">
+          <p style="font-size: 0.85rem; color: var(--text-muted); text-align: center; padding: 12px 0;">No active zones.</p>
+        </div>
+      </div>
+
+      <!-- CV Export Format -->
+      <div class="panel-card">
+        <h2>Computer Vision Export</h2>
+        <div class="form-group">
+          <label for="export-format">Select AI Pipeline Schema:</label>
+          <select id="export-format">
+            <option value="yolo">YOLO Segmentation (Normalized)</option>
+            <option value="opencv">OpenCV Scaled Points (JSON)</option>
+            <option value="python">OpenCV Python Code Snippet</option>
+            <option value="supervision">Roboflow / Supervision JSON</option>
+            <option value="native">PolylinAI Native JSON</option>
+          </select>
+        </div>
+        <div class="export-box" id="export-preview"></div>
+        <div style="display: flex; gap: 8px;">
+          <button id="btn-copy-export" style="flex: 1;">Copy to Clipboard</button>
+          <button id="btn-load-sample" style="flex: 1;">Load Preset</button>
+        </div>
+      </div>
+    </aside>
+  </main>
+
+  <script type="module" src="./main.ts"></script>
+</body>
+</html>
