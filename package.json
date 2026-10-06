@@ -1,6 +1,6 @@
 {
   "name": "polylinai",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "Lightweight, zero-dependency SVG Region of Interest (ROI) & Polyline drawing library for AI Computer Vision video feeds",
   "main": "./dist/index.js",
   "module": "./dist/index.mjs",
