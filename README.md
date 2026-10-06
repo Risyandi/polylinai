@@ -1,6 +1,6 @@
 <p align="center">
   <a href="https://github.com/risyandi/polylinai">
-    <img src="./assets/logo-horizontal.jpg" alt="PolylinAI Logo" width="460" />
+    <img src="https://raw.githubusercontent.com/Risyandi/polylinai/refs/heads/main/assets/logo-horizontal.jpg" alt="PolylinAI Logo" width="460" />
   </a>
 </p>
 
@@ -11,12 +11,12 @@
 <p align="center">
   <a href="https://github.com/risyandi/polylinai/actions"><img src="https://github.com/risyandi/polylinai/actions/workflows/ci.yml/badge.svg" alt="CI" /></a>
   <a href="https://opensource.org/licenses/MIT"><img src="https://img.shields.io/badge/License-MIT-blue.svg" alt="License: MIT" /></a>
-  <a href="https://www.npmjs.com/package/polylinai"><img src="https://img.shields.io/badge/npm-v1.0.0-orange.svg" alt="npm version" /></a>
-  <a href="./CHANGELOG.md"><img src="https://img.shields.io/badge/Changelog-v1.0.0-green.svg" alt="Changelog" /></a>
+  <a href="https://www.npmjs.com/package/polylinai"><img src="https://img.shields.io/badge/npm-v1.0.2-orange.svg" alt="npm version" /></a>
+  <a href="./CHANGELOG.md"><img src="https://img.shields.io/badge/Changelog-v1.0.2-green.svg" alt="Changelog" /></a>
 </p>
 
 <p align="center">
-  <img src="./assets/polylinai-demo.gif" alt="PolylinAI Interactive Studio Demo" width="100%" />
+  <img src="https://github.com/Risyandi/polylinai/blob/main/assets/polylinai-demo.gif?raw=true" alt="PolylinAI Interactive Studio Demo" width="100%" />
 </p>
 
 **PolylinAI** enables users to interactively draw, adjust, and configure custom detection zones and directional tripwires over live camera feeds, recorded videos, or static frames. It exports standardized geometric and directional metadata for Computer Vision pipelines (YOLO, OpenCV, Roboflow, Supervision).

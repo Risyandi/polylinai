@@ -1,6 +1,6 @@
-# PolylinAI v1.0.0 - Production GA Release 🚀
+# PolylinAI v1.0.2 - Production GA Release 🚀
 
-We are thrilled to announce the **v1.0.0** General Availability release of **PolylinAI** — a lightweight, zero-dependency SVG Region of Interest (ROI) and Polyline drawing library for AI Computer Vision video feeds.
+We are thrilled to announce the **v1.0.2** General Availability release of **PolylinAI** — a lightweight, zero-dependency SVG Region of Interest (ROI) and Polyline drawing library for AI Computer Vision video feeds.
 
 ---
 
