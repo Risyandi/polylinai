@@ -15,6 +15,13 @@
   <a href="./CHANGELOG.md"><img src="https://img.shields.io/badge/Changelog-v1.0.2-green.svg" alt="Changelog" /></a>
 </p>
 
+---  
+
+Does polylinai work in Node.js, Bun and Deno?  
+Report link npm compatibility by **compatlab.me** [Check Report](https://compatlab.me/reports/4dfad5f7-eb5a-4bba-a19f-9c48fc9ffc72)
+
+---
+
 <p align="center">
   <img src="https://github.com/Risyandi/polylinai/blob/main/assets/polylinai-demo.gif?raw=true" alt="PolylinAI Interactive Studio Demo" width="100%" />
 </p>
